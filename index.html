@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#071521">
+    <meta name="description" content="Team Folklore's SIH 2026 market research into an edge-first voice activation platform for low-cost embedded devices.">
+    <title>Team Folklore, SIH 2026 — Market Research</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23071521'/%3E%3Cpath d='M12 34h8l5-14 9 25 6-18 4 7h8' fill='none' stroke='%2347dfd1' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="site-shell">
+      <header class="site-header">
+        <a class="brand" href="#top" aria-label="Team Folklore, back to top">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></span>
+          <span>FOLKLORE<span class="brand-period">.</span></span>
+        </a>
+        <nav aria-label="On this page">
+          <a href="#concept">The concept</a>
+          <a href="#opportunity">Opportunity</a>
+          <a href="#validation">Validation</a>
+        </nav>
+        <span class="header-index">RESEARCH DOSSIER / 2026</span>
+      </header>
+
+      <main id="main">
+        <section class="hero" id="top" aria-labelledby="page-title">
+          <div class="hero-copy">
+            <div class="eyebrow"><span class="eyebrow-line"></span> EDGE-FIRST VOICE ACTIVATION</div>
+            <h1 id="page-title">Team Folklore,<br><em>SIH 2026</em></h1>
+            <p class="hero-subtitle">Market Research, Problem Statement <strong>SIH26172</strong></p>
+            <p class="hero-intro">An open-source path to voice control for low-cost devices: listen locally for the wake word, then send only the command audio to the speech service.</p>
+            <a class="text-link" href="#concept">Explore the research <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="hero-visual">
+            <img src="assets/voice-device.png" alt="Concept illustration of a compact voice device surrounded by a luminous activation wave" width="1672" height="941">
+            <span class="image-caption">CONCEPT ILLUSTRATION / EDGE-FIRST VOICE</span>
+          </div>
+          <div class="hero-footnote"><span>01 / THE IDEA</span><span>SCROLL TO EXPLORE ↓</span></div>
+        </section>
+
+        <section class="section problem-section" id="concept" aria-labelledby="problem-title">
+          <div class="section-kicker"><span>01</span> THE PROBLEM</div>
+          <div class="problem-layout">
+            <h2 id="problem-title">Voice control has an <em>integration problem.</em></h2>
+            <div class="prose-block">
+              <p>Embedded-product teams need to connect microphones, noise handling, wake-word detection, audio buffering, networking, speech recognition, intent parsing, and privacy controls.</p>
+              <p>Streaming everything to a server consumes bandwidth and exposes ambient audio. Running full speech recognition on the device can push hardware cost and power beyond a small product’s budget.</p>
+              <div class="question-card"><span>THE DESIGN QUESTION</span><strong>How can an affordable device respond to voice without continuously streaming audio?</strong></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section architecture-section" aria-labelledby="architecture-title">
+          <div class="section-heading">
+            <div><div class="section-kicker"><span>02</span> THE PROPOSED SYSTEM</div><h2 id="architecture-title">A clear boundary between <em>hearing</em> and <em>sending.</em></h2></div>
+            <p>The ESP32-S3 reference design keeps wake-word recognition on the device and makes networking event driven.</p>
+          </div>
+          <div class="signal-flow" aria-label="Audio processing sequence">
+            <div class="flow-step"><span class="step-number">01</span><span class="step-icon" aria-hidden="true">◉</span><strong>Microphone</strong><small>Capture ambient sound</small></div>
+            <div class="flow-step"><span class="step-number">02</span><span class="step-icon" aria-hidden="true">≋</span><strong>Local front end</strong><small>Clean audio + detect speech</small></div>
+            <div class="flow-step active-step"><span class="step-number">03</span><span class="step-icon" aria-hidden="true">✳</span><strong>Wake word</strong><small>Detect “Utho Kikkar”</small></div>
+            <div class="flow-step"><span class="step-number">04</span><span class="step-icon" aria-hidden="true">↗</span><strong>Command upload</strong><small>Send after trigger</small></div>
+            <div class="flow-step"><span class="step-number">05</span><span class="step-icon" aria-hidden="true">⌁</span><strong>Speech + intent</strong><small>Interpret the request</small></div>
+          </div>
+          <div class="architecture-notes">
+            <div><span class="note-rule"></span><strong>5–10 second rolling buffer</strong><p>Keeps recent audio available around the trigger so the beginning of a command is not lost.</p></div>
+            <div><span class="note-rule"></span><strong>Backend-agnostic handoff</strong><p>Product teams can connect the triggered audio to a cloud or self-hosted speech service.</p></div>
+            <div><span class="note-rule"></span><strong>Privacy by architecture</strong><p>Ambient audio stays on the device before activation. Backend data handling still needs its own review.</p></div>
+          </div>
+        </section>
+
+        <section class="section opportunity-section" id="opportunity" aria-labelledby="opportunity-title">
+          <div class="section-heading compact"><div><div class="section-kicker"><span>03</span> WHERE IT FITS</div><h2 id="opportunity-title">Built for the <em>embedded edge.</em></h2></div><p>Hands-free interaction matters most when screens, hands, connectivity, or compute are limited.</p></div>
+          <div class="use-case-grid">
+            <article class="use-case featured"><span class="case-index">01 / SPECIALIZED OPERATIONS</span><h3>Aerospace & cleanrooms</h3><p>Hands-free workflows for gloved technicians and local detection in network-isolated settings.</p><span class="case-symbol" aria-hidden="true">✳</span></article>
+            <article class="use-case"><span class="case-index">02 / FIELD WORK</span><h3>Industrial equipment</h3><p>Voice commands for noisy, hands-busy environments.</p><span class="case-symbol" aria-hidden="true">⌁</span></article>
+            <article class="use-case"><span class="case-index">03 / EVERYDAY DEVICES</span><h3>Smart home & IoT</h3><p>Wake-enabled appliances, switches, and controls.</p><span class="case-symbol" aria-hidden="true">◌</span></article>
+            <article class="use-case"><span class="case-index">04 / MOBILITY</span><h3>Robotics & assistive tech</h3><p>Simple start, stop, and mode-change commands.</p><span class="case-symbol" aria-hidden="true">↗</span></article>
+          </div>
+          <p class="forward-note"><strong>Forward-looking:</strong> In-cabin automotive wake words and user-enrolled custom phrases are additional concepts, subject to technical validation.</p>
+        </section>
+
+        <section class="section economics-section" aria-labelledby="economics-title">
+          <div class="section-kicker"><span>04</span> COST & MARKET CONTEXT</div>
+          <div class="economics-layout">
+            <div class="economics-intro"><h2 id="economics-title">A small-board starting point.</h2><p>The reference platform uses an ESP32-S3 with built-in Wi-Fi and local wake-word support. Its value is the reusable integration around the model: buffering, privacy gating, configuration, and a flexible speech-service handoff.</p></div>
+            <div class="cost-panel"><div class="cost-main"><span>MVP HARDWARE ESTIMATE</span><strong>~₹900</strong><small>ESP32-S3 board + microphone</small></div><div class="cost-pair"><div><span>PORTABLE PROTOTYPE</span><strong>~₹1,800</strong><small>Battery, enclosure & other parts</small></div><div><span>PRODUCTION TARGET</span><strong>₹1,000–1,200</strong><small>Estimated; supplier quotes pending</small></div></div></div>
+          </div>
+          <div class="market-strip"><strong>$9.66B → $23.11B</strong><p>Global speech and voice recognition market forecast, 2025–2030. This is context, <em>not</em> Team Folklore’s addressable market; the embedded-device opportunity still needs bottom-up sizing.</p><span>MARKETSANDMARKETS FORECAST IN SOURCE BRIEF</span></div>
+        </section>
+
+        <section class="section landscape-section" aria-labelledby="landscape-title">
+          <div class="section-heading compact"><div><div class="section-kicker"><span>05</span> COMPETITIVE LANDSCAPE</div><h2 id="landscape-title">The gap is in the <em>whole system.</em></h2></div><p>Existing options validate local wake words. The proposed differentiator is an open reference integration for lower-cost connected devices.</p></div>
+          <div class="comparison-grid">
+            <div class="comparison-card ours"><span>TEAM FOLKLORE / ESP32-S3</span><h3>Open integration layer</h3><p>Local activation, rolling buffer, event-driven networking, and a replaceable ASR backend.</p><small>PROPOSED POSITION</small></div>
+            <div class="comparison-card"><span>ESPRESSIF ESP-SR</span><h3>Wake-word foundation</h3><p>Provides local audio processing and wake-word technology that the reference architecture can build upon.</p><small>OPEN FRAMEWORK</small></div>
+            <div class="comparison-card"><span>PICOVOICE / SENSORY</span><h3>Commercial engines</h3><p>Established on-device wake-word SDKs; licensing and integration choices differ by product.</p><small>PROPRIETARY OPTIONS</small></div>
+            <div class="comparison-card"><span>DEDICATED VOICE HARDWARE</span><h3>Performance alternatives</h3><p>Voice chips and higher-end MCUs may suit products with different power or processing needs.</p><small>HARDWARE TRADE-OFF</small></div>
+          </div>
+        </section>
+
+        <section class="section validation-section" id="validation" aria-labelledby="validation-title">
+          <div class="section-kicker"><span>06</span> WHAT COMES NEXT</div>
+          <div class="validation-layout"><div><h2 id="validation-title">Promising architecture.<br><em>Proof still to come.</em></h2><p>The research points to a viable product direction, but performance and demand have to be tested with real devices and potential OEM partners.</p><div class="status-key"><span class="status-dot"></span> OPEN QUESTIONS / NOT YET MEASURED</div></div><ol class="validation-list"><li><span>01</span><strong>Recognition quality</strong><small>False accepts, false rejects, distance, and noise robustness</small></li><li><span>02</span><strong>Response time</strong><small>Wake word to ASR result, including network delay</small></li><li><span>03</span><strong>Device budget</strong><small>RAM, flash, CPU, idle power, and battery life</small></li><li><span>04</span><strong>Real-world value</strong><small>Bandwidth saved and OEM interviews on integration pain</small></li></ol></div>
+        </section>
+
+        <section class="sources-section" aria-labelledby="sources-title"><div><div class="section-kicker"><span>07</span> SOURCE NOTES</div><h2 id="sources-title">Read the underlying research.</h2><p>Figures above are estimates or cited claims from the supplied market research. Technical performance remains a hypothesis until prototype testing.</p></div><div class="source-links"><a href="https://github.com/espressif/esp-sr" target="_blank" rel="noopener noreferrer">Espressif ESP-SR ↗</a><a href="https://picovoice.ai/docs/porcupine/" target="_blank" rel="noopener noreferrer">Picovoice Porcupine ↗</a><span>Additional source notes: component datasheets, supplier pricing, and MarketsandMarkets forecast in the research brief.</span></div></section>
+      </main>
+      <footer><span>TEAM FOLKLORE <b>✳</b> SIH 2026</span><span>MARKET RESEARCH / SIH26172</span><a href="#top">BACK TO TOP ↑</a></footer>
+    </div>
+  </body>
+</html>
